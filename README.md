@@ -30,4 +30,13 @@ questions <- read.csv("Questions_trunc.csv") %>%
   separate(Time, into = c("Hour", "Minute", "Second"), sep = ":", convert=TRUE)%>%
   separate(Second, into = c("Second", "Z"), sep = "Z", convert=TRUE)
 questions$Z <- NULL
+
+#edited version:
+merged <- answers %>%
+  left_join(questions, c('ParentId' = 'Id')) %>%
+  mutate(total_time = CreationDate.x - CreationDate.y) %>%
+  filter(total_time>0)
+
+ggplot(data = (merged)) + 
+  geom_jitter(mapping = aes(x = total_time, y = Score.x))
 ```
