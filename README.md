@@ -32,7 +32,7 @@ questions$Z <- NULL
 ```
 ## Individual Sections
 ### Kevin's Section: 
-* Feature Question: Does adding a link that describes what they're talking about affect score?
+* Feature Question: Does adding a link that describes what is being asked or answered affect score?
 
 ```{r}
 questions <- (read_csv("Questions_trunc.csv")) %>%
@@ -41,8 +41,10 @@ answers <- (read_csv("Answers_trunc.csv")) %>%
   select(-7)
 a <- questions %>%
   summarise(quantile(Score, 0.90))
+#a = 41
 b <- answers %>%
   summarise(quantile(Score, 0.90))
+#b = 19
 
 q_ind <- questions %>%
   mutate(link = str_detect(Body, "http:")) %>%
@@ -58,3 +60,5 @@ ggplot(data = a_ind) +
   geom_bar(mapping = aes(s)) +
   facet_wrap(~ link)
 ```
+
+* Findings: For both questions and answers, if a link providing further explanation of the topic is included, the ratio of high scores to low scores increases. This means that there is a higher chance of a question or answer with a link to earn a higher score.
