@@ -66,3 +66,6 @@ ggplot(data = a_ind) +
 
 * Findings: For both questions and answers, if a link providing further explanation of the topic is included, the ratio of high scores to low scores increases. This means that there is a higher chance of a question or answer with a link to earn a higher score.
 * Explanation: This finding can be explained by the fact that including a link provides the reader with a second interpretation of what is being described. This means it is more likely the reader will understand what is being said, thus leading to them giving an upvote.
+
+## Team Report:
+* I, Kevin Luth, looked into whether the inclusion of a link to a source further explaining the topic of discussion leads to higher scores. I first found the score representing the 90th percentile in both the questions and answers dataset using the summarise and quantile function and then mutated a column indicating if the score was high or low based on the 90th percentile number. Next I used str_detect in  both the questions and answers to find any posts that include "http:" which signifies a link. I plotted my results using a bar graph that was color coded to show if the post received a high or low score. I also used a facet_wrap by whether or not the post had a link.
