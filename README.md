@@ -24,7 +24,7 @@ Conclusion: We found that despite our thought that the longer the time the lower
 * Madeline found that questions that have Wh question words in them  tend to get slightly higher scores than those that don't
 * Kevin found that for  both questions and answers, if a link providing further explanation of the topic is included, the ratio of high scores to low scores increases. This means that there is a higher chance of a question or answer with a link to earn a higher score.
 * Katie found that answers with fewer characters tend to have higher scores while questions with moderate length (around 50 characters) have higher scores as well.
-* Zandy found
+* Zandy found that questions asked and answers to those questions answered during the Fall semester have a higher score overall and more questions asked and answered during the Fall semester than in the Spring semester or the Summer period with the Spring Semester coming in 2nd and the Summer period coming in 3rd and this is likely due to students taking new classes in the Fall semester of a school year.
 
 #### Madeline's Section
 
