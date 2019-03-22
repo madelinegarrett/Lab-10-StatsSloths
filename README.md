@@ -118,6 +118,10 @@ ggplot(data = questions) +
 Conclusion: I found that shorter answers have higher scores than answers that are extremely long. For questions, lengths around 30-60 characters in length have the highest score and the score decreases steadly once around 75 characters are hit.
 
 
+### Zandy's Section
+* Feature Question: Does the time of year affect the score of a question or answer such as does a question asked or a question answered differe in score based on the summer vs Fall or Fall vs Spring.
+* Why: I am interested if upvotes on a question or answer go up during the time of year when there is school or in the summer months and if upvotes go up in say a fall vs. spring semester
+
 ## Team Report:
 * I, Kevin Luth, looked into whether the inclusion of a link to a source further explaining the topic of discussion leads to higher scores. I first found the score representing the 90th percentile in both the questions and answers dataset using the summarise and quantile function and then mutated a column indicating if the score was high or low based on the 90th percentile number. Next I used str_detect in  both the questions and answers to find any posts that include "http:" which signifies a link. I plotted my results using a bar graph that was color coded to show if the post received a high or low score. I also used a facet_wrap by whether or not the post had a link.
 
