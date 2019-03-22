@@ -23,7 +23,7 @@ Conclusion: We found that despite our thought that the longer the time the lower
 ### Overall Features That Affect The Data
 * Madeline found that questions that have Wh question words in them  tend to get slightly higher scores than those that don't
 * Kevin found that for  both questions and answers, if a link providing further explanation of the topic is included, the ratio of high scores to low scores increases. This means that there is a higher chance of a question or answer with a link to earn a higher score.
-* Katie found 
+* Katie found that answers with fewer characters tend to have higher scores while questions with moderate length (around 50 characters) have higher scores as well.
 * Zandy found
 
 #### Madeline's Section
@@ -88,8 +88,39 @@ ggplot(data = a_ind) +
 * Findings: For both questions and answers, if a link providing further explanation of the topic is included, the ratio of high scores to low scores increases. This means that there is a higher chance of a question or answer with a link to earn a higher score.
 * Explanation: This finding can be explained by the fact that including a link provides the reader with a second interpretation of what is being described. This means it is more likely the reader will understand what is being said, thus leading to them giving an upvote.
 
+### Katie's Section
+* Feature Question: Does the length of a question or answer result in higher scores?
+* Why: When using reddit I feel like I typically see more upvotes on longer questions and responses than on shorter questions and responses.
+```{r}
+answers <- read_csv("Answers_trunc.csv") %>%
+  separate(CreationDate, into = c("Date", "Time"), sep = " ", convert = TRUE)%>%
+  separate(Date, into = c("Year", "Month", "Day"), sep = "-", convert = TRUE)%>%
+  separate(Time, into = c("Hour", "Minute", "Second"), sep = ":", convert=TRUE)%>%
+  mutate(str_count(answers$Body))
+questions <- read.csv("Questions_trunc.csv") %>%
+  separate(CreationDate, into = c("Date", "Time"), sep = "T", convert = TRUE)%>%
+  separate(Date, into = c("Year", "Month", "Day"), sep = "-", convert = TRUE)%>%
+  separate(Time, into = c("Hour", "Minute", "Second"), sep = ":", convert=TRUE)%>%
+  separate(Second, into = c("Second", "Z"), sep = "Z", convert=TRUE)%>%
+  mutate(str_count(questions$Title))
+questions$Z <- NULL
+```
+```{r}
+ggplot(data = answers)+
+  geom_bar(mapping = aes(x = str_count(answers$Body), fill = Score))+
+  labs(title = "Answer Length vs Score", x ="Answer Length", y = "Score")
+```
+```{r}
+ggplot(data = questions) +
+  geom_bar(mapping = aes(x = str_count(questions$Title), fill = Score))+
+  labs(title= "Question Length vs Score", x = "Question Length", y = "Score")
+```
+Conclusion: I found that shorter answers have higher scores than answers that are extremely long. For questions, lengths around 30-60 characters in length have the highest score and the score decreases steadly once around 75 characters are hit.
+
+
 ## Team Report:
 * I, Kevin Luth, looked into whether the inclusion of a link to a source further explaining the topic of discussion leads to higher scores. I first found the score representing the 90th percentile in both the questions and answers dataset using the summarise and quantile function and then mutated a column indicating if the score was high or low based on the 90th percentile number. Next I used str_detect in  both the questions and answers to find any posts that include "http:" which signifies a link. I plotted my results using a bar graph that was color coded to show if the post received a high or low score. I also used a facet_wrap by whether or not the post had a link.
 
 * I, Madeline Garrett, helped to create the team graph by left joiining the data sets. I then created my own individual plot by filtering for questions that start with WH and then making two box plots that show the relationship and mean of those two data sets. I came to the conclustion that WH questions get slightly higher scores than non WH questions. 
 
+* I, Katie Stewart, separated the time of the post into year, month, day, hour, minute and second columns. I also, added a line to each dataset contatining the length of the body for the answers dataset and the length of the title in the question dataset. I then plotted both of my findings using geom bar and added titles as well as changing the x and y axis names.
