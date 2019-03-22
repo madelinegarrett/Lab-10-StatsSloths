@@ -205,6 +205,8 @@ ggplot(data = summer_questions) +
   labs(title = "Month vs Score for Summer Questions", x = "Month", y = "Score")
 ```
 
+* Findings: The data shows that overall Spring and Fall semesters have a higher overall average Score for both Questions and Answers and overall have more questions and answers asked during that period than in the summer months. What differentiates them is that overall the Fall semester has higher scores for both questions and answers and has more questions and answers asked than the Spring semester for those given time periods.
+* Explanation: This Finding shows that most questions and answers are asked during the Fall and Spring semesters and also have higher scores than in the summer period especially in the Fall semester which is likely due to people taking new different classes during the school year and in the Fall semester than in the Spring semester or Summer period.
 ## Team Report:
 * I, Kevin Luth, looked into whether the inclusion of a link to a source further explaining the topic of discussion leads to higher scores. I first found the score representing the 90th percentile in both the questions and answers dataset using the summarise and quantile function and then mutated a column indicating if the score was high or low based on the 90th percentile number. Next I used str_detect in  both the questions and answers to find any posts that include "http:" which signifies a link. I plotted my results using a bar graph that was color coded to show if the post received a high or low score. I also used a facet_wrap by whether or not the post had a link.
 
