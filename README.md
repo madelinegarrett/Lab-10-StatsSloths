@@ -173,6 +173,36 @@ summer_questions <- filter(questions, Month %in% c(6, 7, 8))
 
 
 average_score_summer_questions <- summarise(summer_questions, mean_score = mean(Score))
+
+
+ggplot(data = fall_semester_answers) +
+  geom_bar(mapping = aes(x = Month, fill = Day)) +
+  labs(title = "Month vs Score for Fall Semester Answers", x = "Month", y = "Score")
+
+
+ggplot(data = fall_semester_questions) +
+  geom_bar(mapping = aes(x = Month,fill = Day)) +
+  labs(title = "Month vs Score for Fall Semester Questions", x = "Month", y = "Score")
+
+
+ggplot(data = spring_semester_answers) +
+  geom_bar(mapping = aes(x = Month, fill = Day)) +
+  labs(title = "Month vs Score for Spring Semester Answers", x = "Month", y = "Score")
+
+
+ggplot(data = spring_semester_questions) +
+  geom_bar(mapping = aes(x = Month, fill = Day)) +
+  labs(title = "Month vs Score for Spring Semester Questions", x = "Month", y = "Score")
+
+
+ggplot(data = summer_answers) +
+  geom_bar(mapping = aes(x = Month, fill = Day)) +
+  labs(title = "Month vs Score for Summer Answers", x = "Month", y = "Score")
+
+
+ggplot(data = summer_questions) +
+  geom_bar(mapping = aes(x = Month, fill = Day)) +
+  labs(title = "Month vs Score for Summer Questions", x = "Month", y = "Score")
 ```
 
 ## Team Report:
