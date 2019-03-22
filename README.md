@@ -51,15 +51,17 @@ q_ind <- questions %>%
   mutate(link = str_detect(Body, "http:")) %>%
   mutate(s = case_when((Score>=41)~"high", ((Score<41)~"low")))
 ggplot(data = q_ind) +
-  geom_bar(mapping = aes(s)) +
-  facet_wrap(~ link)
+  geom_bar(mapping = aes(s, fill = s)) +
+  facet_wrap(~ link) +
+  labs(title = "Effect of Link on Score for Questions", x = "Score", y = "Count")
 
 a_ind <- answers %>%
   mutate(link = str_detect(Body, "http:")) %>%
   mutate(s = case_when((Score>=19)~"high", ((Score<19)~"low")))
 ggplot(data = a_ind) +
-  geom_bar(mapping = aes(s)) +
-  facet_wrap(~ link)
+  geom_bar(mapping = aes(s, fill = s)) +
+  facet_wrap(~ link) +
+  labs(title = "Effect of Link on Score for Answers", x = "Score", y = "Count")
 ```
 
 * Findings: For both questions and answers, if a link providing further explanation of the topic is included, the ratio of high scores to low scores increases. This means that there is a higher chance of a question or answer with a link to earn a higher score.
