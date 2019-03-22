@@ -33,6 +33,7 @@ questions$Z <- NULL
 ## Individual Sections
 ### Kevin's Section: 
 * Feature Question: Does adding a link that describes what is being asked or answered affect score?
+* Why: Whenever I am looking for answers online, the first answer I see does not always make sense to me so I find it helpful when another explanation or link is provided. This makes me want to know if this is true for all people.
 
 ```{r}
 questions <- (read_csv("Questions_trunc.csv")) %>%
@@ -62,3 +63,4 @@ ggplot(data = a_ind) +
 ```
 
 * Findings: For both questions and answers, if a link providing further explanation of the topic is included, the ratio of high scores to low scores increases. This means that there is a higher chance of a question or answer with a link to earn a higher score.
+* Explanation: This finding can be explained by the fact that including a link provides the reader with a second interpretation of what is being described. This means it is more likely the reader will understand what is being said, thus leading to them giving an upvote.
