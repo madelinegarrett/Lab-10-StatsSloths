@@ -33,3 +33,28 @@ questions$Z <- NULL
 ## Individual Sections
 ### Kevin's Section: 
 * Feature Question: Does adding a link that describes what they're talking about affect score?
+
+```{r}
+questions <- (read_csv("Questions_trunc.csv")) %>%
+  select(-7)
+answers <- (read_csv("Answers_trunc.csv")) %>%
+  select(-7)
+a <- questions %>%
+  summarise(quantile(Score, 0.90))
+b <- answers %>%
+  summarise(quantile(Score, 0.90))
+
+q_ind <- questions %>%
+  mutate(link = str_detect(Body, "http:")) %>%
+  mutate(s = case_when((Score>=41)~"high", ((Score<41)~"low")))
+ggplot(data = q_ind) +
+  geom_bar(mapping = aes(s)) +
+  facet_wrap(~ link)
+
+a_ind <- answers %>%
+  mutate(link = str_detect(Body, "http:")) %>%
+  mutate(s = case_when((Score>=19)~"high", ((Score<19)~"low")))
+ggplot(data = a_ind) +
+  geom_bar(mapping = aes(s)) +
+  facet_wrap(~ link)
+```
