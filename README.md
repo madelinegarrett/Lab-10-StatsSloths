@@ -4,6 +4,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(data.table)
 library(tidyverse)
 ```
+## Team Section
 
 ```{r}
 answers <- read_csv("Answers_trunc.csv")
@@ -16,7 +17,6 @@ merged <- answers %>%
 
 ggplot(data = (merged)) + 
   geom_jitter(mapping = aes(x = total_time, y = Score.x))
-
 ```
 ```{r}
 answers <- read_csv("Answers_trunc.csv") %>%
@@ -30,3 +30,6 @@ questions <- read.csv("Questions_trunc.csv") %>%
   separate(Second, into = c("Second", "Z"), sep = "Z", convert=TRUE)
 questions$Z <- NULL
 ```
+## Individual Sections
+### Kevin's Section: 
+* Feature Question: Does adding a link that describes what they're talking about affect score?
